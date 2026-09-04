@@ -4,6 +4,7 @@ import {
 } from "lucide-react";
 import { projects, categoryLabels, profile, type Project } from "@/lib/portfolio-data";
 import { MathText } from "./math-text";
+import { FigureGallery } from "./figure-gallery";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 
@@ -120,22 +121,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               )}
               {details.figures && details.figures.length > 0 && (
                 <DetailSection number="04" title="Figures">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {details.figures.map((fig, i) => (
-                      <figure key={i} className="rounded-lg border border-border overflow-hidden bg-card">
-                        <div className="aspect-video bg-muted flex items-center justify-center">
-                          {fig.path ? (
-                            <img src={fig.path} alt={fig.alt} className="w-full h-full object-contain" />
-                          ) : (
-                            <span className="text-muted-foreground text-sm italic">Figure placeholder</span>
-                          )}
-                        </div>
-                        <figcaption className="p-3 text-xs text-muted-foreground border-t border-border/60">
-                          <strong className="text-foreground">Figure {i + 1}.</strong> {fig.caption}
-                        </figcaption>
-                      </figure>
-                    ))}
-                  </div>
+                  <FigureGallery figures={details.figures} />
                 </DetailSection>
               )}
               {details.conclusions.length > 0 && (

@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "react-katex";
-import "katex/dist/katex.min.css";
+// KaTeX CSS is loaded via CDN in layout.tsx for production reliability
 
 /**
  * Render a paragraph that may contain $...$ (inline math) and $$...$$ (block math).
