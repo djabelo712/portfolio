@@ -81,3 +81,5 @@ Caddyfile
 /.kimi-code/
 /.windsurf/
 .env
+
+/qaoa-max-cut/
