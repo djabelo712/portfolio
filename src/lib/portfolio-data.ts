@@ -55,6 +55,54 @@ export type Project = {
 
 export const projects: Project[] = [
 {
+    id: "qaoa-portfolio",
+    title: "QAOA for Portfolio Optimization",
+    tagline: "Quantum optimization of the Markowitz mean-variance portfolio problem with a cardinality constraint.",
+    description:
+      "Encodes the Markowitz portfolio optimization problem (select k of n assets to maximize return minus risk) as a QUBO, builds the cost Hamiltonian, and runs QAOA at depths p=1,2,3 on a 7-stock portfolio. QAOA finds the classical Markowitz optimum at p=1, selecting AAPL, MSFT, JPM, and TSLA with a 96.1% expected annual return.",
+    tags: ["Qiskit", "QAOA", "Portfolio", "Markowitz", "Finance", "QUBO"],
+    category: "algorithm",
+    github: "https://github.com/djabelo712/qaoa-portfolio",
+    date: "2026-09",
+    featured: true,
+    details: {
+      overview:
+        "Portfolio optimization is one of the most promising near-term applications of quantum optimization. The Markowitz mean-variance framework selects a subset of assets to maximize expected return while controlling risk, subject to a cardinality constraint (pick exactly k of n assets). We encode this as a QUBO by penalizing the budget constraint, map the QUBO to an Ising Hamiltonian, and run QAOA on a 7-stock portfolio (AAPL, MSFT, GOOGL, AMZN, JPM, TSLA, META) with k=4, lambda=1.0, and penalty P=15.0. There are C(7,4) = 35 feasible portfolios, making brute-force classical optimization trivial and providing a clean benchmark for QAOA.",
+      methods: [
+        "Fetched 2 years of daily returns for 7 S&P 500 stocks (AAPL, MSFT, GOOGL, AMZN, JPM, TSLA, META) via yfinance, with a synthetic fallback using calibrated annual parameters (mean 8-25%, vol 20-45%, realistic cross-correlation structure).",
+        "Computed annualized expected returns mu and covariance matrix Sigma from daily data; set risk aversion lambda=1.0 and cardinality k=4 (select 4 of 7 assets).",
+        "Encoded the Markowitz objective with a quadratic penalty P*(sum(x)-k)^2 for the budget constraint, yielding a QUBO matrix Q = lambda*Sigma + P*J - diag(mu + 2*P*k).",
+        "Mapped the QUBO to an Ising cost Hamiltonian: H_C = sum_{i<j}(Q_{ij}/4) Z_i Z_j + sum_i c_i Z_i, implemented as RZZ and RZ gates in Qiskit.",
+        "Ran QAOA at depths p=1, 2, 3 on the Qiskit AerSimulator with 4096 shots per evaluation, COBYLA optimizer with 200 iterations.",
+        "Computed the classical Markowitz optimum by brute-force enumeration over all C(7,4)=35 feasible portfolios.",
+        "Generated the efficient frontier (continuous relaxation via SLSQP) and overlaid the QAOA and classical binary solutions.",
+      ],
+      results: [
+        "Classical Markowitz optimal: select AAPL, MSFT, JPM, TSLA with objective 0.236, expected return 96.1%, risk 72.5%.",
+        "QAOA at p=1 finds the exact classical optimum on the first try: same portfolio, same objective, approximation ratio = 1.000.",
+        "QAOA at p=2 and p=3 also find the optimum (no improvement needed; the p=1 solution is already optimal).",
+        "The QUBO penalty P=15.0 successfully enforces the cardinality constraint: all QAOA measurements have exactly 4 assets selected.",
+        "The efficient frontier shows that the binary-optimal portfolio sits on the boundary of the feasible region, close to the continuous-efficient frontier.",
+      ],
+      figures: [
+        { caption: "Efficient frontier with the optimal binary portfolio (star) and the QAOA solution (diamond). Individual assets shown as gray dots.", path: "/projects/qaoa-portfolio/efficient_frontier.png", alt: "Efficient frontier" },
+        { caption: "Portfolio weights: classical Markowitz vs QAOA at p=3. Both select the same 4 assets.", path: "/projects/qaoa-portfolio/portfolio_weights.png", alt: "Portfolio weights comparison" },
+        { caption: "QAOA circuit at p=1: Hadamards, RZZ gates (cost), RZ gates (diagonal cost), Rx gates (mixer), measurement.", path: "/projects/qaoa-portfolio/qaoa_circuit_p1.png", alt: "QAOA circuit at p=1" },
+        { caption: "Bar chart: QAOA at p=1,2,3 vs random and classical Markowitz. QAOA matches the classical optimum at all depths.", path: "/projects/qaoa-portfolio/qaoa_vs_classical.png", alt: "QAOA vs classical comparison" },
+        { caption: "Approximation ratio vs QAOA depth p. QAOA reaches 1.000 (optimal) at p=1 and stays there.", path: "/projects/qaoa-portfolio/approx_ratio_vs_p.png", alt: "Approximation ratio vs depth" },
+      ],
+      conclusions: [
+        "QAOA finds the Markowitz optimum on a 7-asset portfolio at depth p=1, confirming that quantum variational optimization is effective for small-scale financial combinatorial problems.",
+        "The QUBO encoding of the cardinality constraint works well: penalty P=15.0 enforces the budget constraint in 100% of measurements without degrading the optimization landscape.",
+        "The efficient frontier visualization shows the QAOA solution sits on the Pareto-optimal boundary, validating that the quantum-found portfolio is genuinely efficient in the risk-return trade-off.",
+        "Open directions: (a) scale to 15-20 assets (60-190k feasible portfolios, where brute force becomes expensive and QAOA may offer a quantum advantage), (b) test with real IBM Quantum hardware to measure noise impact on the budget constraint, (c) extend to constrained portfolio with sector limits or ESG constraints.",
+      ],
+      acknowledgments:
+        "Self-directed project extending the Max-Cut QAOA work to financial optimization. Built on Qiskit 2.5, SciPy SLSQP, and yfinance. Data: synthetic fallback with calibrated S&P 500 parameters. Code open-sourced under MIT license.",
+    },
+  },
+
+{
     id: "qaoa-max-cut",
     title: "QAOA for Max-Cut",
     tagline: "Quantum Approximate Optimization Algorithm on the canonical Max-Cut problem, with quantum-vs-classical comparison.",
@@ -280,6 +328,15 @@ export type TimelineEntry = {
 
 export const timeline: TimelineEntry[] = [
   // Research (most recent first)
+  {
+    id: "qaoa-portfolio-tl",
+    date: "Sep 2026 (ongoing)",
+    title: "Self-directed study: QAOA for Portfolio Optimization",
+    organization: "Quantum optimization for finance",
+    description:
+      "Quantum optimization of the Markowitz mean-variance portfolio problem on a 7-stock portfolio (AAPL, MSFT, GOOGL, AMZN, JPM, TSLA, META). QUBO encoding of the cardinality constraint, QAOA at depths p=1,2,3, classical Markowitz benchmark. QAOA finds the optimum at p=1. Open-sourced at github.com/djabelo712/qaoa-portfolio.",
+    type: "research",
+  },
   {
     id: "qaoa-max-cut-tl",
     date: "Sep 2026 (ongoing)",
