@@ -55,6 +55,57 @@ export type Project = {
 
 export const projects: Project[] = [
 {
+    id: "qaoa-max-cut",
+    title: "QAOA for Max-Cut",
+    tagline: "Quantum Approximate Optimization Algorithm on the canonical Max-Cut problem, with quantum-vs-classical comparison.",
+    description:
+      "End-to-end QAOA study on a 5-node graph (triangle with two appendages): derive the cost and mixer Hamiltonians, build the variational circuit at depths p=1,2,3, run on the Qiskit Aer simulator, and benchmark against three classical baselines (random, greedy, Goemans-Williamson SDP). At depth p=3, QAOA matches the Goemans-Williamson approximation ratio (0.885 vs 0.878 theoretical bound).",
+    tags: ["Qiskit", "QAOA", "Max-Cut", "Variational", "Optimization", "Aer"],
+    category: "algorithm",
+    github: "https://github.com/djabelo712/qaoa-max-cut",
+    date: "2026-09",
+    featured: true,
+    details: {
+      overview:
+        "QAOA (Farhi, Goldstone, Gutmann 2014) is the canonical variational quantum algorithm for combinatorial optimization. It works by encoding the problem as a cost Hamiltonian $H_C$ and alternating short evolutions under $H_C$ and a transverse-field mixer $H_M$ to drive the state towards the ground state (the optimal solution). For Max-Cut on a graph $G=(V,E)$, the cost Hamiltonian is a sum of $Z_i Z_j$ terms (one per edge), making the circuit sparse and NISQ-friendly. As depth $p \\to \\infty$, QAOA converges to the optimum; at small $p$, the approximation ratio is bounded and known analytically for some graph families. We benchmark QAOA at $p=1,2,3$ against three classical baselines on a 5-node test graph (triangle 0-1-2 with appendages 3 from 1, 4 from 0).",
+      methods: [
+        "Encapsulated Max-Cut as a NetworkX graph + Qiskit SparsePauliOp; cost Hamiltonian $H_C = -\\frac{1}{2}\\sum_{(i,j)\\in E}(1 - Z_i Z_j)$ with one Pauli-Z pair per edge.",
+        "Built the QAOA ansatz circuit at depth $p$ by alternating $e^{-i\\gamma H_C}$ (RZZ gates on edges) and $e^{-i\\beta H_M}$ (Rx gates on each qubit), starting from $|+\\rangle^{\\otimes n}$.",
+        "Optimized the variational parameters $(\\gamma,\\beta)$ with COBYLA (maxiter=200, 4096 shots per evaluation) on the Qiskit AerSimulator.",
+        "Implemented three classical baselines: random cut (expected ratio 0.5), greedy heuristic (O(n+m)), and the Goemans-Williamson SDP relaxation (guaranteed ratio $\\ge 0.878$) via cvxpy.",
+        "Computed the exact optimum by brute-force enumeration ($2^5 = 32$ bitstrings).",
+        "Generated publication-quality figures: graph layout, optimal cut, QAOA circuits at $p=1,2,3$, measurement distribution, approximation-ratio-vs-depth, and QAOA-vs-classical bar chart.",
+      ],
+      results: [
+        "Brute-force optimal cut: 5 (out of 6 edges), bitstring 01001 or 10010 (bit-flip symmetric).",
+        "Greedy heuristic finds the optimum: 5/5 = 100% (the graph is easy for greedy).",
+        "Goemans-Williamson SDP finds the optimum: 5/5 = 100% (theoretical lower bound: 0.878).",
+        "QAOA at $p=1$: best bitstring found is optimal (cut=5); mean cut $\\langle C\\rangle = 3.70$, approximation ratio = 0.740.",
+        "QAOA at $p=2$: best bitstring found is optimal (cut=5); mean cut $\\langle C\\rangle = 4.01$, ratio = 0.801.",
+        "QAOA at $p=3$: best bitstring found is optimal (cut=5); mean cut $\\langle C\\rangle = 4.43$, ratio = 0.885 (exceeds the GW ratio).",
+      ],
+      figures: [
+        { caption: "Our 5-node test graph: triangle (0-1-2) with two appendages (3 from 1, 4 from 0). Six edges.", path: "/projects/qaoa-max-cut/petersen_graph.png", alt: "5-node test graph" },
+        { caption: "The optimal Max-Cut: 5 of 6 edges are cut. Navy = side 0, copper = side 1; cut edges highlighted in gold.", path: "/projects/qaoa-max-cut/petersen_optimal_cut.png", alt: "Optimal cut on the 5-node graph" },
+        { caption: "QAOA circuit at depth p=1: Hadamards prepare |+>, one RZZ per edge (cost), one Rx per qubit (mixer), then measure.", path: "/projects/qaoa-max-cut/qaoa_circuit_p1.png", alt: "QAOA circuit at p=1" },
+        { caption: "QAOA circuit at depth p=2: two layers of cost + mixer. Twice the parameters, twice the depth.", path: "/projects/qaoa-max-cut/qaoa_circuit_p2.png", alt: "QAOA circuit at p=2" },
+        { caption: "QAOA circuit at depth p=3: three layers. Total 6 variational parameters (3 gammas, 3 betas).", path: "/projects/qaoa-max-cut/qaoa_circuit_p3.png", alt: "QAOA circuit at p=3" },
+        { caption: "Approximation ratio of QAOA as a function of depth p. At p=3, QAOA exceeds the Goemans-Williamson bound (0.878).", path: "/projects/qaoa-max-cut/approx_ratio_vs_p.png", alt: "Approximation ratio vs QAOA depth" },
+        { caption: "Bar chart: QAOA at p=1,2,3 vs random, greedy, and Goemans-Williamson. Optimal = 5 (green dashed).", path: "/projects/qaoa-max-cut/qaoa_vs_classical.png", alt: "QAOA vs classical bar chart" },
+        { caption: "Top 16 most-probable measurement outcomes at p=3. Green = optimal bitstring (cut=5), gray = suboptimal.", path: "/projects/qaoa-max-cut/measurement_distribution.png", alt: "Measurement distribution at p=3" },
+        { caption: "Mean cut value <C> as a function of QAOA depth p, compared to the optimal (green) and GW bound (navy).", path: "/projects/qaoa-max-cut/energy_vs_p.png", alt: "Mean cut value vs QAOA depth" },
+      ],
+      conclusions: [
+        "QAOA at depth $p=3$ matches the Goemans-Williamson approximation ratio (0.885 vs 0.878 theoretical bound) on this small graph, with the optimal bitstring appearing as the most-probable measurement outcome.",
+        "The QAOA cost Hamiltonian is sparse: one $Z_i Z_j$ term per edge. For a 3-regular graph on $n$ qubits the circuit has $O(3n)$ two-qubit gates — practical for current NISQ devices at small $p$.",
+        "The variational landscape at small $p$ is well-conditioned: COBYLA converges in fewer than 100 evaluations for our 5-node graph. Barren plateaus are not an issue here (they emerge only for random circuits with high depth).",
+        "Open directions: (a) test on the 10-node Petersen graph (where frustration makes QAOA harder), (b) extend to weighted Max-Cut and constrained variants (e.g., portfolio optimization), (c) run on real IBM Quantum hardware to measure noise-limited effective depth.",
+      ],
+      acknowledgments:
+        "Self-directed project as part of building practical QAOA expertise for PhD applications in quantum information and computing. Built on Qiskit 2.5, NetworkX, and cvxpy. Code open-sourced under MIT license.",
+    },
+  },
+{
     id: "qapinn-wiser",
     title: "Quantum-Assisted Physics-Informed Neural Networks (QAPINNs)",
     tagline: "WISER / BQP research: when and why do variational quantum circuits change PINN learning dynamics?",
@@ -229,6 +280,15 @@ export type TimelineEntry = {
 
 export const timeline: TimelineEntry[] = [
   // Research (most recent first)
+  {
+    id: "qaoa-max-cut-tl",
+    date: "Sep 2026 (ongoing)",
+    title: "Self-directed study: QAOA for Max-Cut",
+    organization: "Quantum optimization",
+    description:
+      "End-to-end implementation of the Quantum Approximate Optimization Algorithm (Farhi et al. 2014) for Max-Cut on a 5-node graph. Cost and mixer Hamiltonians, variational circuit at depths p=1,2,3, classical baselines (random, greedy, Goemans-Williamson SDP), quantum-vs-classical comparison. Open-sourced at github.com/djabelo712/qaoa-max-cut.",
+    type: "research",
+  },
   {
     id: "wiser-qapinn",
     date: "Jul to Aug 2026 (ongoing)",
