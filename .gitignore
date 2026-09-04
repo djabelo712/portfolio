@@ -83,3 +83,4 @@ Caddyfile
 .env
 
 /qaoa-max-cut/
+/qaoa-portfolio/
