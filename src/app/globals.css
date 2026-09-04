@@ -1,0 +1,254 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-garamond);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ============================================================
+   IVORY & NAVY — Academic Light Palette
+   (Same v1 UI/UX, but light + warm, never black)
+   ============================================================ */
+
+:root {
+  --radius: 0.5rem;
+
+  --background: #FAF7F2;          /* warm ivory parchment */
+  --foreground: #1B2A4E;           /* deep navy ink */
+  --card: #FFFFFF;                /* pure white for cards */
+  --card-foreground: #1B2A4E;
+  --popover: #FFFFFF;
+  --popover-foreground: #1B2A4E;
+
+  --primary: #1B2A4E;
+  --primary-foreground: #FAF7F2;
+  --secondary: #F0EDE6;           /* warm ivory tint */
+  --secondary-foreground: #1B2A4E;
+  --muted: #F4F1EB;
+  --muted-foreground: #5C6478;
+  --accent: #B87333;              /* warm copper */
+  --accent-foreground: #FAF7F2;
+  --destructive: #B91C1C;
+  --border: #E8E2D5;              /* warm tan border */
+  --input: #E8E2D5;
+  --ring: #B87333;
+  --chart-1: #1B2A4E;
+  --chart-2: #B87333;
+  --chart-3: #5C6478;
+  --chart-4: #8B6F47;
+  --chart-5: #2E4374;
+  --sidebar: #FAF7F2;
+  --sidebar-foreground: #1B2A4E;
+  --sidebar-primary: #1B2A4E;
+  --sidebar-primary-foreground: #FAF7F2;
+  --sidebar-accent: #F0EDE6;
+  --sidebar-accent-foreground: #1B2A4E;
+  --sidebar-border: #E8E2D5;
+  --sidebar-ring: #B87333;
+
+  /* Quantum-Indigo in light mode — soft, warm, never black */
+  --quantum-indigo: #1B2A4E;
+  --quantum-cyan:   #B87333;       /* recolored to copper for the academic theme */
+  --quantum-gold:   #D49968;
+  --quantum-ink:    #1B2A4E;
+  --quantum-paper:   #FAF7F2;
+  --highlight:      #FBF6E9;
+  --tan:            #E8E2D5;
+  --paper-warm:     #F0EDE6;
+  --muted-text:      #5C6478;
+  --ink-light:      #2E4374;
+}
+
+.dark {
+  /* We allow dark mode but default to light. Dark keeps the navy theme. */
+  --background: #0F172A;
+  --foreground: #F8FAFC;
+  --card: #1B2A4E;
+  --card-foreground: #F8FAFC;
+  --popover: #1B2A4E;
+  --popover-foreground: #F8FAFC;
+  --primary: #FAF7F2;
+  --primary-foreground: #1B2A4E;
+  --secondary: #2E4374;
+  --secondary-foreground: #F8FAFC;
+  --muted: #2E4374;
+  --muted-foreground: #B8C2D6;
+  --accent: #D49968;
+  --accent-foreground: #0F172A;
+  --destructive: #EF4444;
+  --border: #2E4374;
+  --input: #2E4374;
+  --ring: #D49968;
+  --chart-1: #60A5FA;
+  --chart-2: #D49968;
+  --chart-3: #94A3B8;
+  --chart-4: #B87333;
+  --chart-5: #818CF8;
+  --sidebar: #0F172A;
+  --sidebar-foreground: #F8FAFC;
+  --sidebar-primary: #FAF7F2;
+  --sidebar-primary-foreground: #1B2A4E;
+  --sidebar-accent: #2E4374;
+  --sidebar-accent-foreground: #F8FAFC;
+  --sidebar-border: #2E4374;
+  --sidebar-ring: #D49968;
+
+  --quantum-indigo: #60A5FA;
+  --quantum-cyan:   #D49968;
+  --quantum-gold:   #FBBF24;
+  --quantum-ink:    #F8FAFC;
+  --quantum-paper:   #0F172A;
+  --highlight:      #1B2A4E;
+  --tan:            #2E4374;
+  --paper-warm:     #1B2A4E;
+  --muted-text:     #B8C2D6;
+  --ink-light:      #B8C2D6;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ============================================================
+   QUANTUM PORTFOLIO — Animations (kept from v1)
+   ============================================================ */
+
+@keyframes quantum-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50%      { transform: scale(1.1); opacity: 0.9; }
+}
+
+@keyframes quantum-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes quantum-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes quantum-grid-flow {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 60px; }
+}
+
+/* Light version of the hero background — warm radial gradients, never black */
+.quantum-hero-bg {
+  background-image:
+    radial-gradient(ellipse 800px 400px at top left,  rgba(27, 42, 78, 0.08), transparent 60%),
+    radial-gradient(ellipse 600px 300px at bottom right, rgba(184, 115, 51, 0.10), transparent 60%);
+}
+
+.quantum-grid {
+  background-image:
+    linear-gradient(to right, rgba(27, 42, 78, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(27, 42, 78, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: quantum-grid-flow 8s linear infinite;
+}
+
+.quantum-pulse {
+  animation: quantum-pulse 4s ease-in-out infinite;
+}
+
+.quantum-rotate-slow {
+  animation: quantum-rotate 40s linear infinite;
+}
+
+.quantum-fade-up {
+  animation: quantum-fade-up 0.7s ease-out both;
+}
+
+.quantum-glow {
+  box-shadow:
+    0 0 1px color-mix(in oklch, var(--quantum-cyan) 50%, transparent),
+    0 0 12px color-mix(in oklch, var(--quantum-cyan) 25%, transparent);
+}
+
+.quantum-text-gradient {
+  background: linear-gradient(135deg, var(--quantum-indigo), var(--quantum-cyan) 60%, var(--quantum-gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.quantum-card-hover {
+  transition: transform 0.25s ease-out, box-shadow 0.25s ease-out, border-color 0.25s ease-out;
+}
+
+.quantum-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(27, 42, 78, 0.12);
+  border-color: color-mix(in oklch, var(--quantum-cyan) 50%, var(--border));
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+.quantum-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklch, var(--quantum-cyan) 40%, transparent) transparent;
+}
+.quantum-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+.quantum-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in oklch, var(--quantum-cyan) 40%, transparent);
+  border-radius: 3px;
+}
+
+@keyframes skill-fill {
+  from { width: 0; }
+  to   { width: var(--target-width); }
+}
+
+.quantum-skill-bar {
+  animation: skill-fill 1.2s ease-out both;
+}
+
+::selection {
+  background: rgba(184, 115, 51, 0.25);
+  color: var(--quantum-ink);
+}
