@@ -45,7 +45,7 @@
 }
 
 /* ============================================================
-   IVORY & NAVY — Academic Light Palette
+   IVORY & NAVY · Academic Light Palette
    (Same v1 UI/UX, but light + warm, never black)
    ============================================================ */
 
@@ -85,7 +85,7 @@
   --sidebar-border: #E8E2D5;
   --sidebar-ring: #B87333;
 
-  /* Quantum-Indigo in light mode — soft, warm, never black */
+  /* Quantum-Indigo in light mode · soft, warm, never black */
   --quantum-indigo: #1B2A4E;
   --quantum-cyan:   #B87333;       /* recolored to copper for the academic theme */
   --quantum-gold:   #D49968;
@@ -154,7 +154,7 @@
 }
 
 /* ============================================================
-   QUANTUM PORTFOLIO — Animations (kept from v1)
+   QUANTUM PORTFOLIO · Animations (kept from v1)
    ============================================================ */
 
 @keyframes quantum-pulse {
@@ -177,7 +177,7 @@
   to   { background-position: 60px 60px; }
 }
 
-/* Light version of the hero background — warm radial gradients, never black */
+/* Light version of the hero background · warm radial gradients, never black */
 .quantum-hero-bg {
   background-image:
     radial-gradient(ellipse 800px 400px at top left,  rgba(27, 42, 78, 0.08), transparent 60%),

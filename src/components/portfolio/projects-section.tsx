@@ -184,7 +184,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           ))}
         </div>
 
-        {/* Links — stopped to avoid triggering Link navigation when clicking these */}
+        {/* Links · stopped to avoid triggering Link navigation when clicking these */}
         <div className="flex items-center gap-4 pt-3 border-t border-border/40">
           {project.github && (
             <LinkIcon href={project.github} label="Code">

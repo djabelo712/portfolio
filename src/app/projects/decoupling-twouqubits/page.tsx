@@ -6,7 +6,7 @@ export async function generateMetadata() {
   const project = projects.find((p) => p.id === "decoupling-twouqubits");
   if (!project) return { title: "Project not found" };
   return {
-    title: `${project.title} — Djabon Ounimborbitibou`,
+    title: `${project.title} · Djabon Ounimborbitibou`,
     description: project.tagline,
   };
 }

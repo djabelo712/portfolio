@@ -5,12 +5,12 @@ import "katex/dist/katex.min.css";
 
 /**
  * Render a paragraph that may contain $...$ (inline math) and $$...$$ (block math).
- * Use sparingly — for plain text without LaTeX, prefer a normal <p>.
+ * Use sparingly · for plain text without LaTeX, prefer a normal <p>.
  */
 export function MathText({ text, className }: { text: string; className?: string }) {
   // Split on $$...$$ first (block), then on $...$ (inline)
   const parts: React.ReactNode[] = [];
-  // Regex: match $$...$$ (block) OR $...$ (inline) — non-greedy
+  // Regex: match $$...$$ (block) OR $...$ (inline) · non-greedy
   const regex = /(\$\$[^$]+\$\$|\$[^$]+\$)/g;
   let lastIndex = 0;
   let key = 0;

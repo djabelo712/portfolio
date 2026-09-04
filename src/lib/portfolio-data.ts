@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- *  PORTFOLIO DATA — Djabon Ounimborbitibou
+ *  PORTFOLIO DATA · Djabon Ounimborbitibou
  * ============================================================================
  *  Same structure as v1 (profile, projects, skills, timeline).
  *  All content is from Djabon's actual CV, GitHub, and research.
@@ -97,7 +97,7 @@ export const projects: Project[] = [
       ],
       conclusions: [
         "QAOA at depth $p=3$ matches the Goemans-Williamson approximation ratio (0.885 vs 0.878 theoretical bound) on this small graph, with the optimal bitstring appearing as the most-probable measurement outcome.",
-        "The QAOA cost Hamiltonian is sparse: one $Z_i Z_j$ term per edge. For a 3-regular graph on $n$ qubits the circuit has $O(3n)$ two-qubit gates — practical for current NISQ devices at small $p$.",
+        "The QAOA cost Hamiltonian is sparse: one $Z_i Z_j$ term per edge. For a 3-regular graph on $n$ qubits the circuit has $O(3n)$ two-qubit gates · practical for current NISQ devices at small $p$.",
         "The variational landscape at small $p$ is well-conditioned: COBYLA converges in fewer than 100 evaluations for our 5-node graph. Barren plateaus are not an issue here (they emerge only for random circuits with high depth).",
         "Open directions: (a) test on the 10-node Petersen graph (where frustration makes QAOA harder), (b) extend to weighted Max-Cut and constrained variants (e.g., portfolio optimization), (c) run on real IBM Quantum hardware to measure noise-limited effective depth.",
       ],
@@ -196,7 +196,7 @@ export const projects: Project[] = [
     featured: true,
     details: {
       overview:
-        "Quantum decoupling theorems are the workhorses of modern quantum information theory: they say that, given a tripartite state $\\rho^{ABE}$, one can often find a local isometry on $B$ that decouples $A$ from $E$, leaving $A$ in a pure state. They underpin entropy bounds, channel capacities, and the security of many quantum cryptographic protocols. A subtler question is private decoupling: when can a single isometry simultaneously decouple $A$ from $E$ while leaving $A$ entangled (correlated) with a third party $R$ — i.e. hide information from $E$ but reveal it to $R$? Buscemi (2009) gave sufficient conditions but the necessary and sufficient condition was not known even for the simplest case of two-qubit separable $\\rho^{ABE}$. This thesis closes that gap.",
+        "Quantum decoupling theorems are the workhorses of modern quantum information theory: they say that, given a tripartite state $\\rho^{ABE}$, one can often find a local isometry on $B$ that decouples $A$ from $E$, leaving $A$ in a pure state. They underpin entropy bounds, channel capacities, and the security of many quantum cryptographic protocols. A subtler question is private decoupling: when can a single isometry simultaneously decouple $A$ from $E$ while leaving $A$ entangled (correlated) with a third party $R$ · i.e. hide information from $E$ but reveal it to $R$? Buscemi (2009) gave sufficient conditions but the necessary and sufficient condition was not known even for the simplest case of two-qubit separable $\\rho^{ABE}$. This thesis closes that gap.",
       methods: [
         "Formalised the private-decoupling problem as: find isometry $V: B \\to B_1 B_2$ such that $\\rho^{A E}_{\\text{out}} = \\mathrm{Tr}_{B_1 B_2}[V \\rho^{ABE} V^\\dagger] \\approx \\rho^A \\otimes \\rho^E$ (decoupling) and $\\rho^{A B_1}_{\\text{out}} \\approx \\rho^{A B_1}_{\\text{pure entangled}}$ (hiding).",
         "Restricted attention to separable two-qubit $\\rho^{ABE}$, the smallest non-trivial case where Buscemi's construction was incomplete.",

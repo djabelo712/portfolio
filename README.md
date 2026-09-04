@@ -1,15 +1,15 @@
-# Djabon Ounimborbitibou — Personal Portfolio
+# Djabon Ounimborbitibou · Personal Portfolio
 
 My academic portfolio. Built with Next.js, TypeScript, Tailwind CSS, and a custom ivory-and-navy academic theme.
 
 ## What's on the site
 
-- **Hero** — name, MSc credential (AIMS Ghana, Distinction), PhD-seeking badge, and key stats
-- **About** — bio + quick-facts card (location, email, phone, current focus, recognition)
-- **Projects** — 9 cards filterable by category (QKD / Algorithms / Simulation / Quantum ML / Hardware / Tools / Research)
-- **Skills** — 25 skills across Quantum & QChem, Programming, Math & Theory, Tools
-- **Timeline** — 15 entries: research, education, teaching, awards, training
-- **Contact** — email CTA, social links, academic references
+- **Hero** · name, MSc credential (AIMS Ghana, Distinction), PhD-seeking badge, and key stats
+- **About** · bio + quick-facts card (location, email, phone, current focus, recognition)
+- **Projects** · 9 cards filterable by category (QKD / Algorithms / Simulation / Quantum ML / Hardware / Tools / Research)
+- **Skills** · 25 skills across Quantum & QChem, Programming, Math & Theory, Tools
+- **Timeline** · 15 entries: research, education, teaching, awards, training
+- **Contact** · email CTA, social links, academic references
 
 ## How to add or update a project
 
@@ -29,7 +29,7 @@ Open `src/lib/portfolio-data.ts`, find the `projects` array, and add a new entry
   category: "algorithm",      // qkd | algorithm | simulation | ml | hardware | tool | research
   github: "https://github.com/djabelo712/my-new-project",
   date: "2026-09",
-  featured: true,             // optional — featured cards appear first
+  featured: true,             // optional · featured cards appear first
 },
 ```
 
@@ -51,8 +51,8 @@ In the same `projects` array, find the entry by `id` and edit any field. For exa
 ### To add a GitHub project I haven't published yet
 
 Two options:
-1. **Push the project to GitHub first**, then add the `github:` URL to a project entry — the "Code" link appears automatically.
-2. **Use a Google Drive link** instead (set `driveLink:` instead of `github:`) — the "Drive" button appears.
+1. **Push the project to GitHub first**, then add the `github:` URL to a project entry · the "Code" link appears automatically.
+2. **Use a Google Drive link** instead (set `driveLink:` instead of `github:`) · the "Drive" button appears.
 
 ### To add a new skill
 
@@ -69,7 +69,7 @@ In the `timeline` array, add:
 ```ts
 {
   id: "new-entry",
-  date: "Sep 2026 — present",
+  date: "Sep 2026 · present",
   title: "PhD in Quantum Information",
   organization: "Target University",
   description: "What I am working on.",
@@ -101,7 +101,7 @@ bun run dev        # http://localhost:3000
 bun run lint        # check code quality
 ```
 
-## Deploy to Vercel (recommended — free for personal use)
+## Deploy to Vercel (recommended · free for personal use)
 
 ### Step-by-step
 
@@ -134,7 +134,7 @@ bun run lint        # check code quality
 So the workflow is:
 1. Edit `src/lib/portfolio-data.ts` (add a project, update a skill, etc.)
 2. `git push`
-3. Vercel rebuilds in ~30 seconds — your live site is updated.
+3. Vercel rebuilds in ~30 seconds · your live site is updated.
 
 ### Alternative deployments
 

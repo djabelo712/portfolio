@@ -22,7 +22,7 @@ const garamond = EB_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Djabon Ounimborbitibou — Quantum Information Researcher",
+  title: "Djabon Ounimborbitibou · Quantum Information Researcher",
   description: "Academic portfolio of Djabon Ounimborbitibou, MSc Mathematical Sciences (Distinction, AIMS Ghana). Research in quantum information theory, quantum chemistry, and quantum-assisted machine learning. Seeking PhD positions in quantum communication, computing, and information.",
   keywords: ["quantum information", "quantum communication", "Qiskit", "PennyLane", "quantum computing", "decoupling", "quantum chemistry", "VSC", "QML", "PhD", "Djabon", "Ounimborbitibou", "AIMS Ghana"],
   authors: [{ name: "Djabon Ounimborbitibou" }],
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
   openGraph: {
-    title: "Djabon Ounimborbitibou — Quantum Information Researcher",
+    title: "Djabon Ounimborbitibou · Quantum Information Researcher",
     description: "Academic portfolio. MSc Mathematical Sciences (Distinction, AIMS Ghana). Seeking PhD positions in quantum information, computing, and communication.",
     type: "website",
   },

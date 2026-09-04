@@ -16,7 +16,7 @@ const TYPE_META: Record<
 };
 
 export function ExperienceSection() {
-  // Sort by date descending (rough heuristic — assumes newest entries have later dates)
+  // Sort by date descending (rough heuristic · assumes newest entries have later dates)
   const sorted = [...timeline].sort((a, b) => b.date.localeCompare(a.date));
 
   return (
